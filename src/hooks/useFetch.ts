@@ -9,7 +9,7 @@ type FormattedResponse<T> = {
   refresh: () => void;
 };
 
-const useFetch = <T = any[]>(path: APIRoutes): FormattedResponse<T> => {
+const useFetch = <T>(path: APIRoutes): FormattedResponse<T> => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<T | []>([]);
   const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const useFetch = <T = any[]>(path: APIRoutes): FormattedResponse<T> => {
         if (res.ok) {
           return res.json();
         }
-        throw new Error("Something went wrong");
+        throw new Error(`Somethings gone wrong, retry count ${retries}`);
       })
       .then((data) => {
         setLoading(false);
@@ -31,7 +31,6 @@ const useFetch = <T = any[]>(path: APIRoutes): FormattedResponse<T> => {
   }, [path]);
 
   useEffect(() => {
-    console.log(path);
     setLoading(true);
     setData([]);
     setError(null);
