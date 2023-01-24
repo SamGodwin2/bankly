@@ -12,4 +12,5 @@
 
 .total {
   color: var(--primary-300);
+  padding: 0 0 var(--spacer-small) 0;
 }

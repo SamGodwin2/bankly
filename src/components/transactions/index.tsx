@@ -1,18 +1,19 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import { Transaction as TransactionType } from "../../../types";
-import { transactions } from "../../api/data/transactions";
 import "./index.css";
 import { Transaction } from "./item";
+
+type Props = { transactions: TransactionType[] };
 
 const isExpense = (transaction: TransactionType) =>
   transaction.amount.value < 0;
 const isIncome = (transaction: TransactionType) => transaction.amount.value > 0;
 
-const Expenses = () => {
+const Expenses = ({ transactions }: Props) => {
   return (
     <table aria-label="Expenses">
       <thead>
-        <tr>
+        <tr className="table-header">
           <th>Description</th>
           <th>Date</th>
           <th>Amount</th>
@@ -27,11 +28,11 @@ const Expenses = () => {
   );
 };
 
-const Income = () => {
+const Income = ({ transactions }: Props) => {
   return (
     <table aria-label="Income">
       <thead>
-        <tr>
+        <tr className="table-header">
           <th>Description</th>
           <th>Date</th>
           <th>Amount</th>
@@ -46,21 +47,25 @@ const Income = () => {
   );
 };
 
-export const TransactionHistory = () => {
+export const TransactionHistory = ({ transactions }: Props) => {
   return (
     <>
       <h1 className="align-left">Transaction History</h1>
       <Tabs.Root defaultValue="expenses" className="flow">
         <Tabs.List className="tabs__list" aria-label="Filter your transactions">
-          <Tabs.Trigger value="expenses">Expenses</Tabs.Trigger>
-          <Tabs.Trigger value="income">Income</Tabs.Trigger>
+          <Tabs.Trigger value="expenses" className="tabsButton">
+            Expenses
+          </Tabs.Trigger>
+          <Tabs.Trigger value="income" className="tabsButton">
+            Income
+          </Tabs.Trigger>
         </Tabs.List>
 
         <Tabs.Content className="TabsContent" value="expenses">
-          <Expenses />
+          <Expenses transactions={transactions} />
         </Tabs.Content>
         <Tabs.Content className="TabsContent" value="income">
-          <Income />
+          <Income transactions={transactions} />
         </Tabs.Content>
       </Tabs.Root>
     </>

@@ -17,10 +17,21 @@ export const Transaction = ({ transaction }: Props) => (
       </div>
     </td>
     <td>
-      <div>{transaction.date}</div>
+      <div>
+        {new Date(transaction.date).toLocaleDateString(navigator.language, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </div>
     </td>
     <td className="transaction-amount">
-      <div className="amount">{transaction.amount.value}</div>
+      <div className="amount">
+        {transaction.amount.value.toLocaleString(navigator.language, {
+          style: "currency",
+          currency: "GBP",
+        })}
+      </div>
     </td>
   </tr>
 );

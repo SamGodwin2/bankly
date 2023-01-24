@@ -1,8 +1,12 @@
 import { AccountItem } from "./item";
 import "./index.css";
-import { accounts } from "../../api/data/accounts";
+import { Account } from "../../../types";
 
-export const Accounts = () => {
+type Props = {
+  accounts: Account[];
+};
+
+export const Accounts = ({ accounts }: Props) => {
   return (
     <>
       <h1 className="align-left">Your accounts</h1>
