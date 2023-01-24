@@ -8,13 +8,10 @@ type Props = {
 
 export const Accounts = ({ accounts }: Props) => {
   return (
-    <>
-      <h1 className="align-left">Your accounts</h1>
-      <div className="accounts">
-        {accounts.map((account) => (
-          <AccountItem account={account} key={account.account_id} />
-        ))}
-      </div>
-    </>
+    <div className="accounts">
+      {accounts.map((account) => (
+        <AccountItem account={account} key={account.account_id} />
+      ))}
+    </div>
   );
 };

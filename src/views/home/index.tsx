@@ -21,9 +21,11 @@ export const Home = () => {
   } = useFetch<Transaction[]>(APIRoutes.Transactions);
   return (
     <>
+      <h1 className="align-left">Your accounts</h1>
       <ErrorWrapper err={accountError} onClick={accountDataRefresh}>
         {accountLoading ? <Loading /> : <Accounts accounts={accountData} />}
       </ErrorWrapper>
+      <h1 className="align-left">Transaction History</h1>
       <ErrorWrapper err={trxHistoryError} onClick={transactionDataRefresh}>
         {trxHistoryLoading ? (
           <Loading />
