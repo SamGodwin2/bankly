@@ -9,7 +9,7 @@ type FormattedResponse<T> = {
   refresh: () => void;
 };
 
-const useFetch = <T>(path: APIRoutes): FormattedResponse<T> => {
+export const useFetch = <T>(path: APIRoutes): FormattedResponse<T> => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<T | []>([]);
   const [error, setError] = useState(null);
@@ -39,5 +39,3 @@ const useFetch = <T>(path: APIRoutes): FormattedResponse<T> => {
 
   return { data, loading, error, refresh: () => setRetries(retries + 1) };
 };
-
-export default useFetch;

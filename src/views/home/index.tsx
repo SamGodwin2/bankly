@@ -2,7 +2,7 @@ import "whatwg-fetch";
 import { Accounts } from "../../components/accounts";
 import { APIRoutes, Account, Transaction } from "../../../types";
 import { TransactionHistory } from "../../components/transactions";
-import useFetch from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 import { Loading } from "../../components/loading";
 import ErrorWrapper from "../../components/error";
 

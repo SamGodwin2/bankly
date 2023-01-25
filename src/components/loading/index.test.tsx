@@ -6,8 +6,15 @@ test("should render as expected", () => {
 
   expect(asFragment()).toMatchInlineSnapshot(`
 <DocumentFragment>
-  <div>
+  <div
+    class="loading-container"
+  >
     Loading...
+    <img
+      alt="loading icon"
+      class="loader"
+      src="/loading.svg"
+    />
   </div>
 </DocumentFragment>
 `);
